@@ -1,0 +1,44 @@
+.container-fluid {
+  text-align: center;
+  .headl {
+      margin-top: 15px;
+      text-align: center;
+      color: black;
+      font-size: 2.5em;
+      text-transform: uppercase;
+  }
+  .light-100 {
+    margin-bottom: 30px;
+  }
+  .btn:hover {
+    color: white;
+  }
+  .best-scorer {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+  .card {
+    margin: 0 auto;
+    max-width: 300px;
+    margin-bottom: 200px;
+    .card-body {
+      text-align: center;
+      #minutes {
+        margin-bottom: 5px;
+        margin: center;
+      }
+      .form-control { 
+        border-color: #d5d5d5;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      .btn:hover {
+        color: white;
+      }
+      .win {
+        margin-top: 20px;
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<div class="container-fluid padding"> 
+    <p class="headl">Guess the number!</p>
+    <hr class="light-100">
+    <button class="btn btn-outline-dark" [routerLink]="['/']">New game</button>
+    <h4 class="best-scorer">Best Scorer: {{ player.name }} - {{ player.score }} Points</h4>
+    <div class="card">
+        <div class="card-body">
+            <label id="minutes">00</label>:<label id="seconds">00</label>
+            <form [formGroup]="reactiveForm">
+                <div class="form-group">
+                    <input type="text" formControlName="guess" #guess class="form-control" placeholder="Enter four digits" t/>
+                </div>
+                <div *ngIf="reactiveForm.controls['guess'].invalid && (reactiveForm.controls['guess'].dirty || reactiveForm.controls['guess'].touched)" class="alert alert-danger">Please Enter Digits Only!
+                    <div *ngIf="reactiveForm.controls['guess'].errors.required">
+                        Digits are Required!
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-outline-dark" (click)="getGuess(guess.value)" [disabled]="reactiveForm.pristine || reactiveForm.invalid">Check!</button>
+                </div>
+            </form>
+            <h4 class="win" *ngIf="getIsFinished()">Congrats! You Won!</h4>
+        </div>
+    </div>
+</div>   

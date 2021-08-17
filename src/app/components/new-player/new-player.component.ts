@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { GameService } from '../../services/game.service';
 
 @Component({
   selector: 'app-new-player',
@@ -10,16 +11,15 @@ export class NewPlayerComponent implements OnInit {
 
   reactiveForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private gameService: GameService) { }
 
   ngOnInit(): void {
     this.reactiveForm = this.formBuilder.group({
       name: ['', [Validators.required,Validators.pattern('^[a-zA-Z 0-9@._-]+$')]],
     });
   }
-
+  
   addPlayer(name) {
-    return this.httpRequestsService.addProduct(name, company, description, price, image);
+    this.gameService.addPlayer(name);
   }
-
 }
