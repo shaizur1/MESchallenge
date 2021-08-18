@@ -12,7 +12,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class GameComponent implements OnInit, OnDestroy {
 
-  player: any = {};
+  bestScorer = {};
   players: Player[];
   playerSub: Subscription;
   reactiveForm: FormGroup;
@@ -38,7 +38,7 @@ export class GameComponent implements OnInit, OnDestroy {
         if(bestPlayer) {
           if(player.score < bestPlayer.score) {
             bestPlayer = player;
-            this.player = bestPlayer;
+            this.bestScorer = bestPlayer;
           }
         } else {
           bestPlayer = player;
