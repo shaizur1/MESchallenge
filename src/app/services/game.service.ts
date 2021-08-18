@@ -14,7 +14,7 @@ export class GameService {
   }
   
   checkGuess(computer, player) {
-    let result = ''
+    let result = '';
     for (let i = 0; i < 4; i++) {
       if(computer[i] === player[i]) {
         result += '+';
@@ -35,10 +35,10 @@ export class GameService {
   
     function setTime(currPlayer) {
       if(currPlayer.isPlaying) {
-      ++totalSeconds;
-      currPlayer.setTime(totalSeconds);
-      secondsLabel.innerHTML = pad(totalSeconds % 60);
-      minutesLabel.innerHTML = pad(Math.floor(totalSeconds / 60));
+        ++totalSeconds;
+        currPlayer.setTime(totalSeconds);
+        secondsLabel.innerHTML = pad(totalSeconds % 60);
+        minutesLabel.innerHTML = pad(Math.floor(totalSeconds / 60));
       }
     }
 
