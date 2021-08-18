@@ -22,12 +22,15 @@ export class GameComponent implements OnInit, OnDestroy {
   constructor(private httpRequestsService: HttpRequestsService, private gameService: GameService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.getBestScorer();
     this.gameService.showTimer();
     this.randomNumber = this.gameService.randomAnumber();
     this.reactiveForm = this.formBuilder.group({
       guess: ['', [Validators.required, Validators.pattern('^[0-9]+$')]]
     });
+  }
 
+  getBestScorer() {
     this.playerSub = this.httpRequestsService.getPlayers().subscribe((data: Player[]) => {
       this.players = data;
       let bestPlayer;
@@ -38,10 +41,10 @@ export class GameComponent implements OnInit, OnDestroy {
             this.player = bestPlayer;
           }
         } else {
-          bestPlayer = player
+          bestPlayer = player;
         }
       });
-    })
+    });
   }
 
   getGuess(guess) {
