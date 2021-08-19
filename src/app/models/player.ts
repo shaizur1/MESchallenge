@@ -20,6 +20,6 @@ export class Player {
         this.time = finalTime;
     }
     calculateScore() {
-        this.score = (this.time + this.guesses);
+        this.score = this.time + this.guesses;
     }
 }

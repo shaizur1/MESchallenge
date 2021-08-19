@@ -14,12 +14,16 @@ export class NewPlayerComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private gameService: GameService) { }
 
   ngOnInit(): void {
+    this.showForm();
+  }
+
+  showForm() {
     this.reactiveForm = this.formBuilder.group({
       name: ['', [Validators.required,Validators.pattern('^[a-zA-Z 0-9@._-]+$')]],
     });
   }
   
-  addPlayer(name) {
+  getPlayer(name) {
     this.gameService.addPlayer(name);
   }
 }

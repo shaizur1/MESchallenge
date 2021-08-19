@@ -9,7 +9,7 @@ export class GameService {
   currentPlayer: Player;
 
   addPlayer(name) { 
-    let newPlayer = new Player(name);
+    const newPlayer = new Player(name);
     this.currentPlayer = newPlayer;
   }
   
@@ -28,8 +28,8 @@ export class GameService {
   }
 
   showTimer() {
-    let minutesLabel = document.getElementById('minutes');
-    let secondsLabel = document.getElementById('seconds');
+    const minutesLabel = document.getElementById('minutes');
+    const secondsLabel = document.getElementById('seconds');
     let totalSeconds = 0;
     setInterval(setTime, 1000, this.currentPlayer);
   
@@ -54,8 +54,8 @@ export class GameService {
 
   randomAnumber() {
     let text = '';
-    let possible = '0123456789';
-    for (var i = 0; i < 4; i++) {
+    const possible = '0123456789';
+    for (let i = 0; i < 4; i++) {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     console.log(text);

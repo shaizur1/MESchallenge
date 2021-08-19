@@ -13,7 +13,7 @@
           </div>
         </div>
         <div class="form-group">
-          <button class="btn btn-outline-dark" (click)="addPlayer(name.value)" [routerLink]="['/game']" [disabled]="reactiveForm.pristine || reactiveForm.invalid">
+          <button class="btn btn-outline-dark" (click)="getPlayer(name.value)" [routerLink]="['/game']" [disabled]="reactiveForm.pristine || reactiveForm.invalid">
             Start playing
           </button>
         </div>
