@@ -12,7 +12,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class GameComponent implements OnInit, OnDestroy {
 
-  bestScorer = {};
+  bestScorer: any = {};
   players: Player[];
   playerSub: Subscription;
   reactiveForm: FormGroup;
@@ -23,8 +23,12 @@ export class GameComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getBestScorer();
+    this.showForm();
     this.gameService.showTimer();
     this.randomNumber = this.gameService.randomAnumber();
+  }
+
+  showForm() {
     this.reactiveForm = this.formBuilder.group({
       guess: ['', [Validators.required, Validators.pattern('^[0-9]+$')]]
     });
@@ -33,15 +37,16 @@ export class GameComponent implements OnInit, OnDestroy {
   getBestScorer() {
     this.playerSub = this.httpRequestsService.getPlayers().subscribe((data: Player[]) => {
       this.players = data;
-      let bestPlayer;
+      let theBest;
       this.players.forEach(player => {
-        if(bestPlayer) {
-          if(player.score < bestPlayer.score) {
-            bestPlayer = player;
-            this.bestScorer = bestPlayer;
+        if(theBest) {
+          if(player.score < theBest.score) {
+            theBest = player;
+            this.bestScorer = theBest;
           }
         } else {
-          bestPlayer = player;
+          theBest = player;
+          this.bestScorer = theBest;
         }
       });
     });
